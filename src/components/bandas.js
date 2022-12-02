@@ -11,10 +11,6 @@ function Bandas() {
   const [bandaAntigua, setBandaAntigua] = useState("banda");
   const [selected, setSelected] = useState([]);
 
-  const funEvent = (banda) => {
-    debugger
-    setSelected(banda)
-  }
   useEffect(() => {
     if (!navigator.onLine) {
       if (localStorage.getItem("bandas") === null) {
@@ -45,6 +41,10 @@ function Bandas() {
     }
   }, []);
 
+  const handleCheck = (banda) => {
+    setSelected(banda)
+  }
+
   return (
     <div>
       <Flex justifyContent={"center"}>
@@ -69,7 +69,7 @@ function Bandas() {
             </thead>
             <tbody>
               {bandas.map((e, i) => (
-                <Banda key={i} banda={e} />
+                <Banda key={i} handleCheck={handleCheck} banda={e} />
               ))}
             </tbody>
             <p>
@@ -85,7 +85,7 @@ function Bandas() {
           <Box p={4}></Box>
         </section>
         <section>
-          <Detail funEvent={funEvent} selected={selected}></Detail>
+          <Detail selected={selected}></Detail>
         </section>
       </Flex>
     </div>

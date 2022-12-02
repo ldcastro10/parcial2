@@ -3,12 +3,11 @@ import { Button } from "react-bootstrap";
 
 
 const Banda = (props) => {
-
   return (
     <tr>
       <th scope="row">{props.banda.id}</th>
       <td>
-        <Button onClick={() => props.funEvent(props.banda)}>{props.banda.name}</Button>
+        <Button onClick={() => props.handleCheck(props.banda)}>{props.banda.name}</Button>
       </td>
       <td>{props.banda.country}</td>
       <td>{props.banda.genre}</td>
